@@ -12,10 +12,9 @@ function App() {
     setBooks(books.filter(book => book.id!== id))
   }
 
-  const handleChange = (e: React.ChangeEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {name, value} = e.target
     setNewBook(prev => ({...prev, [name]: value }))
-    console.log(newBook)
   }
   const addBook = () => {
     const newId =  books.length + 1
@@ -48,7 +47,7 @@ function App() {
       type="text" />
       <button onClick={addBook}>Qo'shish</button>
       <select 
-        value = {filterBooks}
+        value = {filteredBooks}
         onChange={ (e)=> setFilteredBooks(e.target.value)}
           
 
