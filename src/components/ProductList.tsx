@@ -9,9 +9,11 @@ interface Book {
 
 interface BookProps {
   books: Book[]
+  onDelete: (id: number) => void
 }
 
-function ProductList({ books }: BookProps) {
+function ProductList({ books, onDelete}: BookProps) {
+  
   
   return (
     <div>
@@ -19,7 +21,10 @@ function ProductList({ books }: BookProps) {
       {
         books.length > 0 
         ? books.map(book => (
-          <ProductCard key={book.id} {...book}/>
+          <div key={book.id}>
+            <ProductCard  {...book} onDelete = {() => onDelete(book.id)}/>
+          </div>
+          
         ))
         : <p>Ma'lumot mavjud emas</p>
       }
